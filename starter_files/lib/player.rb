@@ -49,15 +49,23 @@ class CautiousPlayer < Player
   end
 end
 
-# class RiskyPlayer < Player
-#   def roll_again
-#     super && @turn_score <20
-#   end
-# end
-#
-# class SeanPlayer < Player
-#   def roll_again
-#     super && @turn_score <99
-#   end
-# end
+class WoopWoopPlayer < Player
+  def roll_again?
+    super && @turn_score < 6
+  end
+end
+
+class YouCanDoItPlayer < Player
+  def roll_again?
+    super && @turn_score < 4
+  end
+end
+
+class WalkThisWayPlayer < Player
+  def roll_again?
+    super && ((@score >= 80 && @turn_score < (100 - @score)) || @turn_score < 20)
+  end
+end
+
+
 # ## TODO add your own Player subclasses here
